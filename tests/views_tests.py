@@ -1,10 +1,11 @@
 import unittest
-from mock import patch
 
 from base import BaseTestCase
 
 class ViewsTests(BaseTestCase):
-    pass
+    def test_get_to_root_should_render_default_view(self):
+        self.client.get('/')
+        self.assert_template_used('index.html')
 
 if __name__ == '__main__':
     unittest.main()
