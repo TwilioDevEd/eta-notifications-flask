@@ -4,6 +4,8 @@
 <div class="container">
     <h2>{{ order.customer_name }}</h2>
     <h4>{{ order.customer_phone_number }}</h4>
+    <h4>Order Status: {{ order.status }}</h4>
+    <h4>Notification Status: {{ order.notification_status }}</h4>
     <div class="row">
         <div class="col-md-12 top-buffer">
             <form method="POST" action="{{ url_for('order_pickup', order_id=order.id) }}" accept-charset="UTF-8">

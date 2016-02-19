@@ -21,6 +21,9 @@
                 <th>Order ID</th>
                 <th>Customer Name</th>
                 <th>Phone Number</th>
+                <th>Order Status</th>
+                <th>Notification Status</th>
+
             </tr>
         </thead>
         <tbody>
@@ -29,6 +32,8 @@
                     <td><a href="{{ url_for('order_show', order_id=order.id) }}">000-0{{ order.id }}</a></td>
                     <td>{{ order.customer_name }}</td>
                     <td>{{ order.customer_phone_number }}</td>
+                    <td>{{ order.status }}</td>
+                    <td>{{ order.notification_status }}</td>
                 </tr>
             {% endfor %}
         </tbody>

@@ -8,6 +8,8 @@ class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     customer_name = db.Column(db.String, nullable=False)
     customer_phone_number = db.Column(db.String, nullable=False)
+    status = db.Column(db.String, nullable=False)
+    notification_status = db.Column(db.String, nullable=False)
 
     def __init__(self, customer_name, customer_phone_number):
         self.customer_name = customer_name
