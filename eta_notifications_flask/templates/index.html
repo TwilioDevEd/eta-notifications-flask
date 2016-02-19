@@ -24,11 +24,13 @@
             </tr>
         </thead>
         <tbody>
+            {% for order in orders %}
                 <tr>
-                    <td> Html::linkRoute('order.show', '000-0' . $order->id, array($order->id)) }}</td>
-                    <td> $order->customer_name }}</td>
-                    <td> $order->phone_number }}</td>
+                    <td><a href="{{ url_for('order_show', order_id=order.id) }}">000-0{{ order.id }}</a></td>
+                    <td>{{ order.customer_name }}</td>
+                    <td>{{ order.customer_phone_number }}</td>
                 </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>
