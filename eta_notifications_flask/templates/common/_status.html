@@ -1,0 +1,11 @@
+{% macro render_status(status) %}
+{% if status == 'Ready' %}
+    <span class="label label-default">
+{% elif status == 'Shipped' %}
+    <span class="label label-info">
+{% else %}
+    <span class="label label-success">
+{% endif %}
+    {{ status }}
+</span>
+{% endmacro %}

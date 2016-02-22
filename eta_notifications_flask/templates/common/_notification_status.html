@@ -1,0 +1,13 @@
+{% macro render_notification_status(status) %}
+{% if status == 'None' %}
+    <span class="label label-default">
+{% elif status == 'Queued' %}
+    <span class="label label-warning">
+{% elif status == 'sent' %}
+    <span class="label label-info">
+{% else %}
+    <span class="label label-success">
+{% endif %}
+    {{ status }}
+</span>
+{% endmacro %}

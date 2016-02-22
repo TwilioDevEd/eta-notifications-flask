@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
 
+{% from "common/_status.html" import render_status %}
+{% from "common/_notification_status.html" import render_notification_status %}
 {% block content %}
 <div class="container">
     {% with messages = get_flashed_messages() %}
@@ -32,8 +34,8 @@
                     <td><a href="{{ url_for('order_show', order_id=order.id) }}">000-0{{ order.id }}</a></td>
                     <td>{{ order.customer_name }}</td>
                     <td>{{ order.customer_phone_number }}</td>
-                    <td>{{ order.status }}</td>
-                    <td>{{ order.notification_status }}</td>
+                    <td>{{ render_status(order.status) }}</td>
+                    <td>{{ render_notification_status(order.notification_status) }}</td>
                 </tr>
             {% endfor %}
         </tbody>
