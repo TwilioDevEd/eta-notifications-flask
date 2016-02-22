@@ -5,6 +5,11 @@ python:
 install:
   - pip install -r requirements.txt
   - pip install coveralls
+env:
+  global:
+  - TWILIO_ACCOUNT_SID=AC2XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  - TWILIO_AUTH_TOKEN=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  - TWILIO_NUMBER=+15551230987
 before_script:
   - python manage.py db upgrade
 script: coverage run manage.py test

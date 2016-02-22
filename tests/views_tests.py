@@ -65,7 +65,6 @@ class ViewsTests(BaseTest):
 
         with patch('twilio.rest.resources.messages.Messages.create') as create_mock:
             response = self.test_client.post("/order/{0}/deliver".format(order.id))
-            print response
             create_mock.assert_called_once_with(
                 body='Your clothes have been delivered',
                 from_=app.config['TWILIO_NUMBER'],
