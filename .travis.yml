@@ -12,4 +12,7 @@ env:
   - TWILIO_NUMBER=+15551230987
 before_script:
   - python manage.py db upgrade
-script: coverage run manage.py test
+script:
+  - coverage run manage.py test
+after_script:
+  - coverage report
