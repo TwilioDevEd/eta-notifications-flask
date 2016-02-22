@@ -8,12 +8,14 @@ class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     customer_name = db.Column(db.String, nullable=False)
     customer_phone_number = db.Column(db.String, nullable=False)
-    status = db.Column(db.String, nullable=False)
-    notification_status = db.Column(db.String, nullable=False)
+    status = db.Column(db.String, nullable=False, default='Ready')
+    notification_status = db.Column(db.String, nullable=False, default='None')
 
-    def __init__(self, customer_name, customer_phone_number):
+    def __init__(self, customer_name, customer_phone_number, status='Ready', notification_status='None'):
         self.customer_name = customer_name
         self.customer_phone_number = customer_phone_number
+        self.status = status
+        self.notification_status = notification_status
 
     def get_id(self):
         try:

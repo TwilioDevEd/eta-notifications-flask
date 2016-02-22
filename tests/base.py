@@ -1,9 +1,15 @@
-from eta_notifications_flask import app
-from flask.ext.testing import TestCase
+import unittest
+from eta_notifications_flask.models.order import Order
 
 
-class BaseTestCase(TestCase):
-    render_templates = False
+class BaseTest(unittest.TestCase):
+    def setUp(self):
+        from eta_notifications_flask import app, db
+        self.app = app
+        self.db = db
+        self.test_client = app.test_client()
+        self.app.config['WTF_CSRF_ENABLED'] = False
 
-    def create_app(self):
-        return app
+    def tearDown(self):
+        Order.query.delete()
+        self.db.session.commit()

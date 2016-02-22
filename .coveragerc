@@ -6,3 +6,4 @@ source = .
 omit =
   */migrations/*
   */tests/*
+  */venv/*

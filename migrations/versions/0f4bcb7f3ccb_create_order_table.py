@@ -15,15 +15,14 @@ depends_on = None
 from alembic import op
 import sqlalchemy as sa
 
-
 def upgrade():
     op.create_table(
         'orders',
         sa.Column('id', sa.Integer, primary_key=True),
         sa.Column('customer_name', sa.String(50), nullable=False),
         sa.Column('customer_phone_number', sa.String(20), nullable=False),
-        sa.Column('status', sa.String(20), nullable=False, server_default='Ready'),
-        sa.Column('notification_status', sa.String(20), nullable=False, server_default='None')
+        sa.Column('status', sa.String(20), nullable=False, server_default='Ready', default='Ready'),
+        sa.Column('notification_status', sa.String(20), nullable=False, server_default='None', default='None')
     )
 
 def downgrade():
