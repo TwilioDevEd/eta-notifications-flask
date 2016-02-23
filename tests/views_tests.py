@@ -43,7 +43,7 @@ class ViewsTests(BaseTest):
         with patch('twilio.rest.resources.messages.Messages.create') as create_mock:
             response = self.test_client.post("/order/{0}/pickup".format(order.id))
             create_mock.assert_called_once_with(
-                body='Your clothes will be sent and will be delivered in 20 minutes',
+                body='Your laundry is done and on its way to you!',
                 from_=app.config['TWILIO_NUMBER'],
                 status_callback=u'http://localhost/order/1/notification/status/update',
                 to=u'+15551234321'
@@ -66,7 +66,7 @@ class ViewsTests(BaseTest):
         with patch('twilio.rest.resources.messages.Messages.create') as create_mock:
             response = self.test_client.post("/order/{0}/deliver".format(order.id))
             create_mock.assert_called_once_with(
-                body='Your clothes have been delivered',
+                body='Your laundry is arriving now.',
                 from_=app.config['TWILIO_NUMBER'],
                 status_callback=u'http://localhost/order/1/notification/status/update',
                 to=u'+15551234321'

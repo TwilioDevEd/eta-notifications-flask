@@ -35,7 +35,7 @@ def order_pickup(order_id):
 
     callback_url = request.base_url.replace('/pickup', '') + '/notification/status/update'
     _send_sms_notification(order.customer_phone_number,
-                          'Your clothes will be sent and will be delivered in 20 minutes',
+                          'Your laundry is done and on its way to you!',
                           callback_url)
 
     return redirect(url_for('order_show', order_id=order_id))
@@ -49,7 +49,7 @@ def order_deliver(order_id):
 
     callback_url = request.base_url.replace('/deliver', '') + '/notification/status/update'
     _send_sms_notification(order.customer_phone_number,
-                          'Your clothes have been delivered',
+                          'Your laundry is arriving now.',
                           callback_url)
 
     return redirect(url_for('order_index'))
