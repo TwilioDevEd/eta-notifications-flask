@@ -1,6 +1,6 @@
 from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
-from eta_notifications_flask.models.order import Order
+from eta_notifications_flask.models import Order
 
 from eta_notifications_flask import app, db
 

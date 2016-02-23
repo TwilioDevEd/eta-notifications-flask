@@ -2,11 +2,7 @@ from eta_notifications_flask import app, db
 from flask import url_for, flash, redirect, render_template, request
 from twilio.rest import TwilioRestClient
 
-from eta_notifications_flask.models import init_models_module
-
-init_models_module(db, app)
-
-from eta_notifications_flask.models.order import Order
+from eta_notifications_flask.models import Order
 
 @app.route('/')
 def order_index():

@@ -1,6 +1,4 @@
-from eta_notifications_flask.models import app_db
-
-db = app_db()
+from eta_notifications_flask import db
 
 class Order(db.Model):
     __tablename__ = "orders"

@@ -1,5 +1,5 @@
 import unittest
-from eta_notifications_flask.models.order import Order
+from eta_notifications_flask.models import Order
 
 
 class BaseTest(unittest.TestCase):

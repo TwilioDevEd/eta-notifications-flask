@@ -1,5 +1,5 @@
 import six
-from eta_notifications_flask.models.order import Order
+from eta_notifications_flask.models import Order
 from eta_notifications_flask import db, app
 
 if six.PY3:
