@@ -21,8 +21,8 @@ def upgrade():
         sa.Column('id', sa.Integer, primary_key=True),
         sa.Column('customer_name', sa.String(50), nullable=False),
         sa.Column('customer_phone_number', sa.String(20), nullable=False),
-        sa.Column('status', sa.String(20), nullable=False, server_default='Ready', default='Ready'),
-        sa.Column('notification_status', sa.String(20), nullable=False, server_default='None', default='None')
+        sa.Column('status', sa.String(20), nullable=False),
+        sa.Column('notification_status', sa.String(20), nullable=False)
     )
 
 def downgrade():

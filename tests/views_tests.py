@@ -45,11 +45,11 @@ class ViewsTests(BaseTest):
             create_mock.assert_called_once_with(
                 body='Your clothes will be sent and will be delivered in 20 minutes',
                 from_=app.config['TWILIO_NUMBER'],
-                status_callback=u'http://localhost/order/1/pickup/status',
+                status_callback=u'http://localhost/order/1/notification/status/update',
                 to=u'+15551234321'
             )
             self.assertEquals('Shipped', order.status)
-            self.assertEquals('Queued', order.notification_status)
+            self.assertEquals('queued', order.notification_status)
 
     def test_send_deliver_notification(self):
         order = Order(
@@ -68,13 +68,13 @@ class ViewsTests(BaseTest):
             create_mock.assert_called_once_with(
                 body='Your clothes have been delivered',
                 from_=app.config['TWILIO_NUMBER'],
-                status_callback=u'http://localhost/order/1/deliver/status',
+                status_callback=u'http://localhost/order/1/notification/status/update',
                 to=u'+15551234321'
             )
             self.assertEquals('Delivered', order.status)
-            self.assertEquals('Queued', order.notification_status)
+            self.assertEquals('queued', order.notification_status)
 
-    def test_change_pickup_status(self):
+    def test_change_notification_status(self):
         order = Order(
             customer_name='Vincent Vega',
             customer_phone_number='+15551234321'
@@ -86,27 +86,10 @@ class ViewsTests(BaseTest):
         self.assertEquals('Ready', order.status)
         self.assertEquals('None', order.notification_status)
 
-        self.test_client.post("/order/{0}/pickup/status".format(order.id), data=dict(
-            MessageStatus='Some Status',
+        self.test_client.post("/order/{0}/notification/status/update".format(order.id), data=dict(
+            MessageStatus='sent',
         ))
-        self.assertEquals('Some Status', order.notification_status)
-
-    def test_change_deliver_status(self):
-        order = Order(
-            customer_name='Vincent Vega',
-            customer_phone_number='+15551234321'
-        )
-
-        db.session.add(order)
-        db.session.commit()
-
-        self.assertEquals('Ready', order.status)
-        self.assertEquals('None', order.notification_status)
-
-        self.test_client.post("/order/{0}/deliver/status".format(order.id), data=dict(
-            MessageStatus='Some Status',
-        ))
-        self.assertEquals('Some Status', order.notification_status)
+        self.assertEquals('sent', order.notification_status)
 
 if __name__ == '__main__':
     unittest.main()
