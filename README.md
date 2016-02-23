@@ -40,16 +40,30 @@ To run the app locally, first clone this repository and `cd` into its directory.
     python manage.py db upgrade
     ```
 
+1. Modify seed data:
+
+   We have provided an example name and phone number in the seed data. In order for
+   the application to send sms notifications, you must edit this seed data providing
+   a real phone number where you want to receive the sms notifications.
+
+   In order to do this, you must modify
+   [this file](https://github.com/TwilioDevEd/eta-notifications-laravel/blob/master/database/seeds/OrdersTableSeeder.php)
+   that is located at: `project_root/manage.py`
+
 1. Seed the database:
 
    ```
    python manage.py dbseed
    ```
 
-   We have provided an example name and phone number in the seed data. In order for
-   the application to send sms notifications, you must edit this seed data providing
-   a real phone number where you want to receive the sms notifications. You can edit the
-   seed data at `project_root/manage.py`.
+1. Expose your application to the wider internet using ngrok. You can look
+   [here](#expose-the-application-to-the-wider-internet) for more details. This step
+   is important, as the application won't work as expected if you run it through
+   localhost.
+
+   ```bash
+   $ ngrok http 5000
+   ```
 
 1. Start the development server:
 
@@ -57,7 +71,22 @@ To run the app locally, first clone this repository and `cd` into its directory.
     python manage.py runserver
     ```
 
-You can now access the application at [http://localhost:5000](http://localhost:5000).
+    now you can access the application at your ngrok subdomain that should look
+    something like this: `http://<subdomain>.ngrok.io`
+
+### Expose the Application to the Wider Internet
+
+If you want your application to be accessible from the internet, you can either
+forward the necessary ports in your router, or use a tool like
+[ngrok](https://ngrok.com/) that will expose your local host to the internet.
+
+You can read [this blog](https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html)
+for more details on how to use ngrok, but if you are using version 2.x, exposing
+a specific port should be as easy as:
+
+```bash
+$ ngrok http 5000
+```
 
 ## Run the tests
 
