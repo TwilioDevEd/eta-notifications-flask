@@ -15,6 +15,10 @@ def _send_sms_notification(to, message_body, callback_url):
                            status_callback=callback_url)
 
 @app.route('/')
+def home():
+    return render_template('home.html')
+
+@app.route('/orders')
 def order_index():
     orders = Order.query.all()
 
