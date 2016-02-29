@@ -1,0 +1,6 @@
+{
+    "title": "ETA Notifications",
+    "repo": "TwilioDevEd/eta-notifications-flask",
+    "description": "In this tutorial, we will learn how to implement ETA Notifications using Python - Flask and Twilio",
+    "heroku": false
+}
