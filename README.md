@@ -82,7 +82,7 @@ forward the necessary ports in your router, or use a tool like
 
 You can read [this blog](https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html)
 for more details on how to use ngrok, but if you are using version 2.x, exposing
-a specific port it should be easily done with the following command:
+a specific port should be easily done with the following command:
 
 ```bash
 $ ngrok http 5000
