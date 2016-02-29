@@ -29,7 +29,7 @@ To run the app locally, first clone this repository and `cd` into its directory.
     pip install -r requirements.txt
     ```
 
-1. Copy the `.env.example` file to `.env`, and edit it to include your credentials
+1. Copy the `.env.example` file to `.env`, and edit it including your credentials
    for the Twilio API (found at https://www.twilio.com/user/account/settings). You
    will also need a [Twilio Number](https://www.twilio.com/user/account/phone-numbers/incoming).
 1. Run `source .env` to apply the environment variables (or even better, use [autoenv](https://github.com/kennethreitz/autoenv))
@@ -42,9 +42,9 @@ To run the app locally, first clone this repository and `cd` into its directory.
 
 1. Modify seed data:
 
-   We have provided an example name and phone number in the seed data. In order for
+   We have provided an example of name and phone number in the seed data. In order for
    the application to send sms notifications, you must edit this seed data providing
-   a real phone number where you want to receive the sms notifications.
+   a real phone number where you want the sms notifications to be received.
 
    In order to do this, you must modify
    [this file](https://github.com/TwilioDevEd/eta-notifications-laravel/blob/master/database/seeds/OrdersTableSeeder.php)
@@ -56,9 +56,9 @@ To run the app locally, first clone this repository and `cd` into its directory.
    python manage.py dbseed
    ```
 
-1. Expose your application to the wider internet using ngrok. You can look
+1. Expose your application to the wider internet using ngrok. You can click
    [here](#expose-the-application-to-the-wider-internet) for more details. This step
-   is important, as the application won't work as expected if you run it through
+   is important because the application won't work as expected if you run it through
    localhost.
 
    ```bash
@@ -71,7 +71,7 @@ To run the app locally, first clone this repository and `cd` into its directory.
     python manage.py runserver
     ```
 
-    now you can access the application at your ngrok subdomain that should look
+    Now you can access the application at your ngrok subdomain that should look
     something like this: `http://<subdomain>.ngrok.io`
 
 ### Expose the Application to the Wider Internet
@@ -82,7 +82,7 @@ forward the necessary ports in your router, or use a tool like
 
 You can read [this blog](https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html)
 for more details on how to use ngrok, but if you are using version 2.x, exposing
-a specific port should be as easy as:
+a specific port it should be easily done with the following command:
 
 ```bash
 $ ngrok http 5000
