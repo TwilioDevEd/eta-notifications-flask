@@ -1,10 +1,9 @@
 .chapter(data-title='ETA Notifications Flask')
   .step(
     data-title='What Are We Building?',
-    data-file='migrations/versions/0f4bcb7f3ccb_create_order_table.py')
+    data-file='eta_notifications_flask/views.py')
     :markdown
-      ## Eta Notifications
-      ## Laundry On-Demand
+      ## Eta Notifications - Laundry On-Demand
 
       ![ETA Notifications](http://howtodocs.s3.amazonaws.com/eta-notifications.png)
 
@@ -43,9 +42,9 @@
   .step(
     data-title='Setting Up the Twilio REST Client',
     data-file='eta_notifications_flask/views.py',
-    data-highlight='8-11')
+    data-highlight='3, 8-11')
     :markdown
-      ## Setting Up the Twilio REST Client
+      ## Setting up the Twilio REST Client
 
       Here we instantiate a Twilio REST client with our [Twilio Account
       Credentials](//www.twilio.com/user/account/settings) stored
@@ -93,7 +92,7 @@
     :markdown
       ## Handling the Twilio Callback
 
-      Twilio will make a post request to this controller, each time our message
+      Twilio will make a post request to this view each time our message
       status changes to one of the following: queued, failed, sent, delivered, or
       undelivered.
 
