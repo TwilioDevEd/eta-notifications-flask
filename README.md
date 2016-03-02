@@ -71,8 +71,10 @@ To run the app locally, first clone this repository and `cd` into its directory.
     python manage.py runserver
     ```
 
-    Now you can access the application at your ngrok subdomain that should look
-    something like this: `http://<subdomain>.ngrok.io`
+Once Ngrok is running, open up your browser and go to your Ngrok URL. It will
+look like this: `http://9a159ccf.ngrok.io`
+
+That's it!
 
 ### Expose the Application to the Wider Internet
 
@@ -80,7 +82,7 @@ If you want your application to be accessible from the internet, you can either
 forward the necessary ports in your router, or use a tool like
 [ngrok](https://ngrok.com/) that will expose your local host to the internet.
 
-You can read [this blog](https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html)
+You can read [this blog post](https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html)
 for more details on how to use ngrok, but if you are using version 2.x, exposing
 a specific port should be easily done with the following command:
 

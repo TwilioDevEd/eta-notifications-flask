@@ -7,7 +7,7 @@ if six.PY3:
 else:
     from mock import patch
 
-from base import BaseTest
+from .base import BaseTest
 
 class ViewsTests(BaseTest):
     def test_get_to_root_should_render_order_list(self):
@@ -24,9 +24,9 @@ class ViewsTests(BaseTest):
         db.session.add(order2)
         db.session.commit()
 
-        response = self.test_client.get('/')
-        assert b"Vincent Vega" in response.data
-        assert b"Mia Wallace" in response.data
+        response = self.test_client.get('/orders')
+        assert "Vincent Vega" in str(response.data)
+        assert "Mia Wallace" in str(response.data)
 
     def test_send_pickup_notification(self):
         order = Order(
