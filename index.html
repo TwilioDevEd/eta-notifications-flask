@@ -18,7 +18,7 @@ Instacart have built an entire industry around the fact that we, the
 customer, like to order things instantly, wherever we are. The key to
 those services working is notifying customers instantly when things
 change.</p>
-<p>In this tutorial, we&#39;ll build a notification system for Laundr.io, an
+<p>On this tutorial we&#39;ll build a notification system for Laundr.io, an
 on-demand laundry service.</p>
 <p>Let&#39;s get started!</p>
 </div><div data-title="Trigger the Notifications" data-file="eta_notifications_flask/views.py" data-highlight="33-59" class="step"><h2 id="trigger-the-notifications">Trigger the Notifications</h2>
@@ -31,10 +31,10 @@ trigger notifications. There are two cases we&#39;d like to handle:</p>
 <p>In a production app we would probably trigger the second notification
 when the delivery person was physically near the customer, using GPS. In
 this case we&#39;ll just use a button.</p>
-<p>Now, on the server we&#39;re going to use the Twilio API Client to actually
+<p>On the server we&#39;re going to use the Twilio API Client to actually
 send out the notifications.</p>
 </div><div data-title="Setting Up the Twilio REST Client" data-file="eta_notifications_flask/views.py" data-highlight="8-11" class="step"><h2 id="setting-up-the-twilio-rest-client">Setting Up the Twilio REST Client</h2>
-<p>Here we instantiate a Twilio REST client with our <a href="//www.twilio.com/user/account/settings">Twilio Account
+<p>We instantiate a Twilio REST client with our <a href="//www.twilio.com/user/account/settings">Twilio Account
 Credentials</a> stored
 as environment variables.</p>
 <hr>
@@ -43,11 +43,11 @@ as environment variables.</p>
 <li><a href="//www.twilio.com/docs/quickstart/python/sms/sending-via-rest">Twilio Rest Client - Send SMS</a></li>
 </ul>
 </div><div data-title="Handling the Notification Trigger" data-file="eta_notifications_flask/views.py" data-highlight="40-43, 54-57" class="step"><h2 id="handling-the-notification-trigger">Handling the Notification Trigger</h2>
-<p>Here we extract the phone number stored in each order,
+<p>We extract the phone number stored in each order,
 and then simply send an SMS message with the specified body.</p>
 <p>Next let&#39;s look closer at how we send the SMS.</p>
 </div></div><div data-title="Sending the Message" data-file="eta_notifications_flask/views.py" data-highlight="11-15" class="step"><h2 id="sending-the-message">Sending the Message</h2>
-<p>Here is how we actually send the SMS. If we want to improve
+<p>This is how we actually send the SMS. If we want to improve
 the message we can send a picture of the laundry by adding:</p>
 <pre><code class="cm-s-monokai lang-python"><span class="cm-variable">media_url</span>=<span class="cm-string">&#39;http://lorempixel.com/image_output/fashion-q-c-640-480-1.jpg&#39;</span>
 </code></pre>
@@ -55,7 +55,7 @@ the message we can send a picture of the laundry by adding:</p>
 url to let us know if the message was delivered. Let&#39;s take a closer
 look at how this works.</p>
 </div><div data-title="Handling the Twilio Callback" data-file="eta_notifications_flask/views.py" data-highlight="61-67" class="step"><h2 id="handling-the-twilio-callback">Handling the Twilio Callback</h2>
-<p>Twilio will make a post request to this controller, each time our message
+<p>Twilio will make a post request to this controller each time our message
 status changes to one of the following: queued, failed, sent, delivered, or
 undelivered.</p>
 <p>We then update this <code>notification_status</code> on the <code>Order</code> so that we can decide

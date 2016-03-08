@@ -15,7 +15,7 @@
       those services working is notifying customers instantly when things
       change.
 
-      In this tutorial, we'll build a notification system for Laundr.io, an
+      On this tutorial we'll build a notification system for Laundr.io, an
       on-demand laundry service.
 
       Let's get started!
@@ -37,7 +37,7 @@
       when the delivery person was physically near the customer, using GPS. In
       this case we'll just use a button.
 
-      Now, on the server we're going to use the Twilio API Client to actually
+      On the server we're going to use the Twilio API Client to actually
       send out the notifications.
 
   .step(
@@ -47,7 +47,7 @@
     :markdown
       ## Setting Up the Twilio REST Client
 
-      Here we instantiate a Twilio REST client with our [Twilio Account
+      We instantiate a Twilio REST client with our [Twilio Account
       Credentials](//www.twilio.com/user/account/settings) stored
       as environment variables.
 
@@ -63,7 +63,7 @@
     :markdown
       ## Handling the Notification Trigger
 
-      Here we extract the phone number stored in each order,
+      We extract the phone number stored in each order,
       and then simply send an SMS message with the specified body.
 
       Next let's look closer at how we send the SMS.
@@ -75,7 +75,7 @@
     :markdown
         ## Sending the Message
 
-        Here is how we actually send the SMS. If we want to improve
+        This is how we actually send the SMS. If we want to improve
         the message we can send a picture of the laundry by adding:
 
         ```python
@@ -93,7 +93,7 @@
     :markdown
       ## Handling the Twilio Callback
 
-      Twilio will make a post request to this controller, each time our message
+      Twilio will make a post request to this controller each time our message
       status changes to one of the following: queued, failed, sent, delivered, or
       undelivered.
 
@@ -106,14 +106,14 @@
       **See Also:**
       * [Message Status Parameter](//www.twilio.com/docs/api/rest/sending-messages#status-callback-parameter-request-parameters)
       * [Message Status Values](//www.twilio.com/docs/api/rest/message#sms-status-values)
-  
+
   .step
     :markdown
       ## Where to next?
 
       That's it! We've just implemented an on-demand notification service that
       alerts our customers when their order is arriving.
-      
+
       If you are a Python developer working with Twilio,  you might want
       to check out these other tutorials:
 
