@@ -47,7 +47,7 @@ To run the app locally, first clone this repository and `cd` into its directory.
    a real phone number where you want the sms notifications to be received.
 
    In order to do this, you must modify
-   [this file](https://github.com/TwilioDevEd/eta-notifications-laravel/blob/master/database/seeds/OrdersTableSeeder.php)
+   [this file](https://github.com/TwilioDevEd/eta-notifications-flask/blob/master/manage.py#L23)
    that is located at: `project_root/manage.py`
 
 1. Seed the database:
