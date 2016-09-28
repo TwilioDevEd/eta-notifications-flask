@@ -1,6 +1,6 @@
 from eta_notifications_flask import app, db
 from flask import url_for, flash, redirect, render_template, request
-from twilio.rest import TwilioRestClient
+from twilio.rest import Client
 
 from eta_notifications_flask.models import Order
 
@@ -8,7 +8,7 @@ def _send_sms_notification(to, message_body, callback_url):
     account_sid = app.config['TWILIO_ACCOUNT_SID']
     auth_token = app.config['TWILIO_AUTH_TOKEN']
     twilio_number = app.config['TWILIO_NUMBER']
-    client = TwilioRestClient(account_sid, auth_token)
+    client = Client(account_sid, auth_token)
     client.messages.create(to=to,
                            from_=twilio_number,
                            body=message_body,
