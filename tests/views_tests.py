@@ -40,7 +40,7 @@ class ViewsTests(BaseTest):
         self.assertEquals('Ready', order.status)
         self.assertEquals('None', order.notification_status)
 
-        with patch('twilio.rest.resources.messages.Messages.create') as create_mock:
+        with patch('twilio.rest.api.v2010.account.message.MessageList.create') as create_mock:
             response = self.test_client.post("/order/{0}/pickup".format(order.id))
             create_mock.assert_called_once_with(
                 body='Your laundry is done and on its way to you!',
@@ -63,7 +63,7 @@ class ViewsTests(BaseTest):
         self.assertEquals('Ready', order.status)
         self.assertEquals('None', order.notification_status)
 
-        with patch('twilio.rest.resources.messages.Messages.create') as create_mock:
+        with patch('twilio.rest.api.v2010.account.message.MessageList.create') as create_mock:
             response = self.test_client.post("/order/{0}/deliver".format(order.id))
             create_mock.assert_called_once_with(
                 body='Your laundry is arriving now.',
