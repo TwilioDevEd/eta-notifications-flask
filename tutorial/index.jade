@@ -1,0 +1,136 @@
+.chapter(data-title='ETA Notifications Flask')
+  .step(
+    data-title='What Are We Building?',
+    data-file='migrations/versions/0f4bcb7f3ccb_create_order_table.py')
+    :markdown
+      ## Eta Notifications
+      ## Laundry On-Demand
+
+      ![ETA Notifications](http://howtodocs.s3.amazonaws.com/eta-notifications.png)
+
+      There are a wide range of businesses that deliver goods or services to
+      their customers on-demand. Companies like Uber, TaskRabbit, and
+      Instacart have built an entire industry around the fact that we, the
+      customer, like to order things instantly, wherever we are. The key to
+      those services working is notifying customers instantly when things
+      change.
+
+      On this tutorial we'll build a notification system for Laundr.io, an
+      on-demand laundry service.
+
+      Let's get started!
+
+  .step(
+    data-title="Trigger the Notifications",
+    data-file='eta_notifications_flask/views.py'
+    data-highlight='33-59')
+    :markdown
+      ## Trigger the Notifications
+
+      This screen shows two buttons that allow the laundry delivery person to
+      trigger notifications. There are two cases we'd like to handle:
+
+      1. Delivery person picks up laundry to be delivered.
+      2. Delivery person is arriving to the customer's house.
+
+      In a production app we would probably trigger the second notification
+      when the delivery person was physically near the customer, using GPS. In
+      this case we'll just use a button.
+
+      On the server we're going to use the Twilio API Client to actually
+      send out the notifications.
+
+  .step(
+    data-title='Setting Up the Twilio REST Client',
+    data-file='eta_notifications_flask/views.py',
+    data-highlight='8-11')
+    :markdown
+      ## Setting Up the Twilio REST Client
+
+      We instantiate a Twilio REST client with our [Twilio Account
+      Credentials](//www.twilio.com/user/account/settings) stored
+      as environment variables.
+
+      ---
+
+      **See Also:**
+      * [Twilio Rest Client - Send SMS](//www.twilio.com/docs/quickstart/python/sms/sending-via-rest)
+
+  .step(
+    data-title='Handling the Notification Trigger',
+    data-file='eta_notifications_flask/views.py',
+    data-highlight='40-43, 54-57')
+    :markdown
+      ## Handling the Notification Trigger
+
+      We extract the phone number stored in each order,
+      and then simply send an SMS message with the specified body.
+
+      Next let's look closer at how we send the SMS.
+
+.step(
+    data-title='Sending the Message',
+    data-file='eta_notifications_flask/views.py',
+    data-highlight='11-15')
+    :markdown
+        ## Sending the Message
+
+        This is how we actually send the SMS. If we want to improve
+        the message we can send a picture of the laundry by adding:
+
+        ```python
+        media_url='http://lorempixel.com/image_output/fashion-q-c-640-480-1.jpg'
+        ```
+
+        In addition to the required parameters, we can pass a `status_callback`
+        url to let us know if the message was delivered. Let's take a closer
+        look at how this works.
+
+  .step(
+    data-title='Handling the Twilio Callback',
+    data-file='eta_notifications_flask/views.py',
+    data-highlight='61-67')
+    :markdown
+      ## Handling the Twilio Callback
+
+      Twilio will make a post request to this controller each time our message
+      status changes to one of the following: queued, failed, sent, delivered, or
+      undelivered.
+
+      We then update this `notification_status` on the `Order` so that we can decide
+      what to do next with the Order. This is a great place to add logic that would
+      resend the message or send out an
+      [automated survey](//www.twilio.com/docs/tutorials/walkthrough/automated-survey/python/django).
+
+      ---
+      **See Also:**
+      * [Message Status Parameter](//www.twilio.com/docs/api/rest/sending-messages#status-callback-parameter-request-parameters)
+      * [Message Status Values](//www.twilio.com/docs/api/rest/message#sms-status-values)
+
+  .step
+    :markdown
+      ## Where to next?
+
+      That's it! We've just implemented an on-demand notification service that
+      alerts our customers when their order is arriving.
+
+      If you are a Python developer working with Twilio,  you might want
+      to check out these other tutorials:
+
+      [**Workflow Automation**](//www.twilio.com/docs/howto/walkthrough/workflow-automation/python/flask)
+
+      Increase your rate of response by automating the workflows that are key
+      to your business. In this tutorial, learn how to build a ready-for-scale
+      automated SMS workflow, for a vacation rental company.
+
+      [**Masked Numbers**](//www.twilio.com/docs/howto/walkthrough/masked-numbers/python/flask)
+
+      Protect your users' privacy by anonymously connecting them with Twilio
+      Voice and SMS. Learn how to create disposable phone numbers on-demand,
+      so two users can communicate without exchanging personal information.
+
+      ## Did this help?
+
+      Thanks for checking out this tutorial! If you have any feedback to share
+      with us, we'd love to hear it. Tweet
+      [@twilio](http://twitter.com/twilio) to let us know what you think.
