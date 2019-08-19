@@ -19,7 +19,7 @@ pbr==1.8.1
 pycparser==2.14
 python-editor==0.5
 pytz==2015.7
-six==1.10.0
+six==1.12.0
 SQLAlchemy==1.0.11
 traceback2==1.4.0
 twilio==6.9.0
