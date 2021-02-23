@@ -15,6 +15,7 @@ depends_on = None
 from alembic import op
 import sqlalchemy as sa
 
+
 def upgrade():
     op.create_table(
         'orders',
@@ -22,8 +23,9 @@ def upgrade():
         sa.Column('customer_name', sa.String(50), nullable=False),
         sa.Column('customer_phone_number', sa.String(20), nullable=False),
         sa.Column('status', sa.String(20), nullable=False),
-        sa.Column('notification_status', sa.String(20), nullable=False)
+        sa.Column('notification_status', sa.String(20), nullable=False),
     )
+
 
 def downgrade():
     op.drop_table('orders')

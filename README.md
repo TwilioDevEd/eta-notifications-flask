@@ -1,5 +1,5 @@
 # ETA Notifications for Python - Flask
-[![Build Status](https://travis-ci.org/TwilioDevEd/eta-notifications-flask.svg?branch=master)](https://travis-ci.org/TwilioDevEd/eta-notifications-flask)
+![Flask](https://github.com/TwilioDevEd/eta-nofitifcations-flask/workflows/Flask/badge.svg)
 
 ETA notifications implementation with Python - Flask and Twilio.
 
@@ -9,34 +9,38 @@ This project is built using the [Flask](http://flask.pocoo.org/) web framework. 
 
 To run the app locally, first clone this repository and `cd` into its directory. Then:
 
-1. Create a new virtual environment:
-    - If using vanilla [virtualenv](https://virtualenv.pypa.io/en/latest/):
+1. Create and activate a new python3 virtual environment.
 
-        ```
-        virtualenv venv
-        source venv/bin/activate
-        ```
-
-    - If using [virtualenvwrapper](https://virtualenvwrapper.readthedocs.org/en/latest/):
-
-        ```
-        mkvirtualenv eta-notifications
-        ```
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
 
 1. Install the requirements:
 
-    ```
+    ```bash
     pip install -r requirements.txt
     ```
 
-1. Copy the `.env.example` file to `.env`, and edit it including your credentials
-   for the Twilio API (found at https://www.twilio.com/user/account/settings). You
-   will also need a [Twilio Number](https://www.twilio.com/user/account/phone-numbers/incoming).
-1. Run `source .env` to apply the environment variables (or even better, use [autoenv](https://github.com/kennethreitz/autoenv))
+1. Copy the sample configuration file and edit it to match your configuration.
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   Twilio API credentials can be found [here](https://www.twilio.com/console) 
+   and find you can create a REST API Key [here](https://www.twilio.com/console/project/api-keys).
+   If using the twilio CLI you can run:
+   
+   ```bash
+   twilio api:core:keys:create --friendly-name=worm-transfer -o json
+   ```
+   
+   Copy or create a Twilio phone number from [here](https://www.twilio.com/console/phone-numbers).
 
 1. Run the migrations with:
 
-    ```
+    ```bash
     python manage.py db upgrade
     ```
 
@@ -52,7 +56,7 @@ To run the app locally, first clone this repository and `cd` into its directory.
 
 1. Seed the database:
 
-   ```
+   ```bash
    python manage.py dbseed
    ```
 
@@ -62,12 +66,12 @@ To run the app locally, first clone this repository and `cd` into its directory.
    localhost.
 
    ```bash
-   $ ngrok http 5000
+   ngrok http 5000
    ```
 
 1. Start the development server:
 
-    ```
+    ```bash
     python manage.py runserver
     ```
 
@@ -87,17 +91,17 @@ for more details on how to use ngrok, but if you are using version 2.x, exposing
 a specific port should be easily done with the following command:
 
 ```bash
-$ ngrok http 5000
+ngrok http 5000
 ```
 
 ## Run the tests
 
-You can run the tests locally through [coverage](http://coverage.readthedocs.org/):
+```bash
+python manage.py test
+```
 
-1. Run the tests:
+## Meta
 
-    ```
-    $ coverage run manage.py test
-    ```
-
-You can then view the results with `coverage report` or build an HTML report with `coverage html`.
+* No warranty expressed or implied. Software is as is. Diggity.
+* [MIT License](LICENSE)
+* Lovingly crafted by Twilio Developer Education.
